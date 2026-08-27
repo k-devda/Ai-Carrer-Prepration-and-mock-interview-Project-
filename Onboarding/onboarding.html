@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ascend — Set up your profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+
+<button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+</button>
+
+<div class="progress-mobile" id="progressMobile">
+  <span class="on"></span><span></span><span></span><span></span>
+</div>
+
+<div class="shell">
+
+  <!-- LEFT CONTEXT / STEPPER PANEL -->
+  <aside class="brand">
+    <div class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 16L10 10L14 14L20 6" stroke="#0A0E1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6H20V11" stroke="#0A0E1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      Ascend
+      <span class="logo-badge">AI</span>
+    </div>
+
+    <div class="brand-copy">
+      <p class="kicker" id="brandKicker">Step 1 of 4</p>
+      <h1 id="brandHeadline">Let's set up your profile.</h1>
+      <p id="brandSub">A few quick details help Ascend personalise your skill-gap analysis, weekly plan and mock interviews from the very first session.</p>
+    </div>
+
+    <div class="steps" id="stepsList">
+      <div class="step-item active" data-step="1">
+        <div class="step-dot">1</div>
+        <div class="step-text"><b>Basic profile</b><span>Who you are</span></div>
+      </div>
+      <div class="step-item" data-step="2">
+        <div class="step-dot">2</div>
+        <div class="step-text"><b>Your target</b><span>Role &amp; company</span></div>
+      </div>
+      <div class="step-item" data-step="3">
+        <div class="step-dot">3</div>
+        <div class="step-text"><b>Current skills</b><span>What you already know</span></div>
+      </div>
+      <div class="step-item" data-step="4">
+        <div class="step-dot">4</div>
+        <div class="step-text"><b>Resume</b><span>Required for ATS &amp; gap analysis</span></div>
+      </div>
+    </div>
+
+    <div class="brand-footer">
+      <strong>Takes under 2 minutes</strong>&nbsp;— you can edit everything later from Settings.
+    </div>
+  </aside>
+
+  <!-- RIGHT FORM PANEL -->
+  <main class="form-side">
+    <a href="#" class="skip-link" id="skipLink">Skip for now →</a>
+
+    <div class="card">
+
+      <!-- STEP 1 -->
+      <div class="panel active" data-panel="1">
+        <div class="card-head">
+          <p class="eyebrow">Profile setup · 1 of 4</p>
+          <h2>Tell us about you</h2>
+          <p>This helps us tailor guidance to where you're starting from.</p>
+        </div>
+
+        <div class="field">
+          <label for="fullName">Full name<span class="required-mark">*</span></label>
+          <input type="text" id="fullName" placeholder="e.g. Priya Sharma" autocomplete="name">
+          <div class="field-error" id="fullNameError">Please enter your full name.</div>
+        </div>
+
+        <div class="two-col">
+          <div class="field">
+            <label for="phone">Phone <span class="hint">(optional)</span></label>
+            <input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="gradYear">Graduation year</label>
+            <input type="number" id="gradYear" placeholder="2026" min="2020" max="2030">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="college">College / Organisation</label>
+          <input type="text" id="college" placeholder="e.g. Nirma University">
+        </div>
+
+        <div class="field">
+          <label>I am a<span class="required-mark">*</span></label>
+          <div class="chip-group" id="statusChips">
+            <div class="chip" data-value="Final year student">Final year student</div>
+            <div class="chip" data-value="Pre-final year student">Pre-final year student</div>
+            <div class="chip" data-value="Job seeker">Job seeker</div>
+            <div class="chip" data-value="Working professional">Working professional</div>
+          </div>
+          <div class="field-error" id="statusError">Please select what best describes you.</div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-primary" onclick="validateStep1()">Continue</button>
+        </div>
+        <div class="dots-footnote"><span class="on"></span><span></span><span></span><span></span></div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="panel" data-panel="2">
+        <div class="card-head">
+          <p class="eyebrow">Profile setup · 2 of 4</p>
+          <h2>What are you preparing for?</h2>
+          <p>We'll use this to run your skill-gap analysis and build your weekly plan.</p>
+        </div>
+
+        <div class="field">
+          <label>Target job role<span class="required-mark">*</span></label>
+          <div class="chip-group" id="roleChips">
+            <div class="chip" data-value="Software Development Engineer">Software Development Engineer</div>
+            <div class="chip" data-value="Frontend Developer">Frontend Developer</div>
+            <div class="chip" data-value="Backend Developer">Backend Developer</div>
+            <div class="chip" data-value="Full Stack Developer">Full Stack Developer</div>
+            <div class="chip" data-value="Data Analyst">Data Analyst</div>
+            <div class="chip" data-value="Data Scientist">Data Scientist</div>
+            <div class="chip" data-value="DevOps Engineer">DevOps Engineer</div>
+            <div class="chip custom-chip" data-value="Other" id="otherRoleChip">+ Other</div>
+          </div>
+          <div class="other-input-wrap" id="otherRoleInputWrap">
+            <input type="text" id="otherRoleInput" placeholder="Type your target role">
+          </div>
+          <div class="field-error" id="roleError">Please select or enter your target job role.</div>
+        </div>
+
+        <div class="field">
+          <label>Target companies <span class="hint">(optional — pick as many as you like)</span></label>
+          <div class="chip-group" id="companyChips">
+            <div class="chip" data-value="Google">Google</div>
+            <div class="chip" data-value="Amazon">Amazon</div>
+            <div class="chip" data-value="Microsoft">Microsoft</div>
+            <div class="chip" data-value="TCS">TCS</div>
+            <div class="chip" data-value="Infosys">Infosys</div>
+            <div class="chip" data-value="Wipro">Wipro</div>
+            <div class="chip" data-value="Flipkart">Flipkart</div>
+            <div class="chip custom-chip" data-value="Other" id="otherCompanyChip">+ Other</div>
+          </div>
+          <div class="other-input-wrap" id="otherCompanyInputWrap">
+            <div class="tag-input-wrap" id="companyTagWrap">
+              <input type="text" id="companyOtherInput" placeholder="Type a company and press Enter">
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-ghost" onclick="goStep(1)">Back</button>
+          <button type="button" class="btn-primary" onclick="validateStep2()">Continue</button>
+        </div>
+        <div class="dots-footnote"><span></span><span class="on"></span><span></span><span></span></div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="panel" data-panel="3">
+        <div class="card-head">
+          <p class="eyebrow">Profile setup · 3 of 4</p>
+          <h2>What do you already know?</h2>
+          <p>This isn't a test — just add everything you're already comfortable with, across languages, DSA, databases, core subjects or aptitude. We'll only use it to skip what you know when we build your practice plan and skill-gap report.</p>
+        </div>
+
+        <div class="field">
+          <label for="skillInput">Skills<span class="hint"> — add as many as you like</span></label>
+          <div class="tag-input-wrap" id="tagWrap">
+            <input type="text" id="skillInput" placeholder="Type a skill and press Enter">
+          </div>
+
+          <div class="skill-groups">
+            <div class="skill-group-label">Programming <span class="hint">(languages, DSA, core subjects, aptitude)</span></div>
+            <div class="suggest-row">
+              <span class="suggest-chip" onclick="addSkill('Java')">+ Java</span>
+              <span class="suggest-chip" onclick="addSkill('Python')">+ Python</span>
+              <span class="suggest-chip" onclick="addSkill('C++')">+ C++</span>
+              <span class="suggest-chip" onclick="addSkill('JavaScript')">+ JavaScript</span>
+              <span class="suggest-chip" onclick="addSkill('Data Structures')">+ Data Structures</span>
+              <span class="suggest-chip" onclick="addSkill('Algorithms')">+ Algorithms</span>
+              <span class="suggest-chip" onclick="addSkill('OOP')">+ OOP</span>
+              <span class="suggest-chip" onclick="addSkill('Operating Systems')">+ Operating Systems</span>
+              <span class="suggest-chip" onclick="addSkill('Computer Networks')">+ Computer Networks</span>
+              <span class="suggest-chip" onclick="addSkill('Quantitative Aptitude')">+ Quantitative Aptitude</span>
+              <span class="suggest-chip" onclick="addSkill('Logical Reasoning')">+ Logical Reasoning</span>
+            </div>
+
+            <div class="skill-group-label">Database</div>
+            <div class="suggest-row">
+              <span class="suggest-chip" onclick="addSkill('SQL')">+ SQL</span>
+              <span class="suggest-chip" onclick="addSkill('MySQL')">+ MySQL</span>
+              <span class="suggest-chip" onclick="addSkill('DBMS')">+ DBMS</span>
+              <span class="suggest-chip" onclick="addSkill('MongoDB')">+ MongoDB</span>
+              <span class="suggest-chip" onclick="addSkill('PostgreSQL')">+ PostgreSQL</span>
+            </div>
+
+            <div class="skill-group-label">Soft skills</div>
+            <div class="suggest-row">
+              <span class="suggest-chip" onclick="addSkill('Communication')">+ Communication</span>
+              <span class="suggest-chip" onclick="addSkill('Teamwork')">+ Teamwork</span>
+              <span class="suggest-chip" onclick="addSkill('Problem Solving')">+ Problem Solving</span>
+              <span class="suggest-chip" onclick="addSkill('Leadership')">+ Leadership</span>
+              <span class="suggest-chip" onclick="addSkill('Time Management')">+ Time Management</span>
+              <span class="suggest-chip" onclick="addSkill('Public Speaking')">+ Public Speaking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-ghost" onclick="goStep(2)">Back</button>
+          <button type="button" class="btn-primary" onclick="goStep(4)">Continue</button>
+        </div>
+        <div class="dots-footnote"><span></span><span></span><span class="on"></span><span></span></div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="panel" data-panel="4">
+        <div class="card-head">
+          <p class="eyebrow">Profile setup · 4 of 4</p>
+          <h2>Add your resume</h2>
+          <p>Required — this unlocks your ATS score and skill-gap match. Upload a PDF or a clear image of your resume.</p>
+        </div>
+
+        <label class="dropzone" id="dropzone" for="resumeFile">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4M12 4L7 9M12 4l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="dz-title">Drop your resume here, or click to browse</div>
+          <div class="dz-sub">PDF, JPG or PNG (a clear photo/scan works too), up to 5 MB</div>
+          <input type="file" id="resumeFile" accept=".pdf,.jpg,.jpeg,.png,image/*,application/pdf">
+        </label>
+        <div class="field-error" id="resumeError">Please upload your resume to continue — it's required to generate your skill-gap report.</div>
+
+        <div class="file-preview" id="filePreview">
+          <div class="file-ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6"/><path d="M14 2v5h5" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <div class="file-meta">
+            <b id="fileName">resume.pdf</b>
+            <span id="fileSize">0 KB</span>
+          </div>
+          <button type="button" class="file-remove" id="fileRemove" aria-label="Remove file">✕</button>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-ghost" onclick="goStep(3)">Back</button>
+          <button type="button" class="btn-primary" onclick="finishSetup()">Complete setup</button>
+        </div>
+        <div class="dots-footnote"><span></span><span></span><span></span><span class="on"></span></div>
+      </div>
+
+      <!-- DONE -->
+      <div class="panel" data-panel="5">
+        <div class="done-wrap">
+          <div class="done-ring">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#0A0E1A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h2 style="font-family:var(--font-display);font-weight:800;font-size:23px;margin:0 0 8px;">You're all set</h2>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.6;max-width:340px;margin:0 auto 26px;">Your profile is ready. Head to your dashboard to see your skill-gap report and this week's plan.</p>
+          <button type="button" class="btn-primary" style="width:100%;" onclick="showToast('Redirecting to your dashboard…')">Go to dashboard</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<div class="status-toast" id="statusMsg">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span id="statusMsgText">Profile saved.</span>
+</div>
+
+<script src="onboarding.js"></script>
+
+</body>
+</html>
